@@ -7,7 +7,10 @@ class Map extends Component {
   }
 
   componentDidMount() {
-    
+    // After Google Maps API is fetched, uses initMap() callback.
+    // The function it calls belongs to the window, need to give it to the window.
+    // Pass the window the <Map/> initMap() function
+    window.initMap = this.initMap;
   }
 
   initMap = () => {

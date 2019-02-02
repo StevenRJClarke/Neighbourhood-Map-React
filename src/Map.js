@@ -6,6 +6,10 @@ class Map extends Component {
     apiKey: process.env.REACT_APP_MAP_API_KEY
   }
 
+  initMap = () => {
+
+  }
+
   render() {
     return (
       <div id="map" className="Map">

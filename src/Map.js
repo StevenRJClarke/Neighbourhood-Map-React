@@ -11,6 +11,16 @@ class Map extends Component {
     // The function it calls belongs to the window, need to give it to the window.
     // Pass the window the <Map/> initMap() function
     window.initMap = this.initMap;
+
+    const API = this.state.apiKey;
+
+    // Create the <script> that will call the Google Maps API and call initMap()
+    const script = document.createElement('script');
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${API}&callback=initMap`;
+    script.async = true;
+    script.defer = true;
+
+    document.body.appendChild(script);
   }
 
   initMap = () => {

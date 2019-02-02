@@ -8,7 +8,7 @@ class Map extends Component {
 
   render() {
     return (
-      <div className="Map">
+      <div id="map" className="Map">
       </div>
     );
   }

@@ -7,7 +7,10 @@ class Map extends Component {
   }
 
   initMap = () => {
-
+    let map = new window.google.maps.Map(document.getElementById('map'), {
+      center: { lat: 51.407660, lng: -0.220460 },
+      zoom: 12
+    });
   }
 
   render() {

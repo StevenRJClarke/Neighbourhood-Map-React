@@ -35,6 +35,55 @@ class Map extends Component {
       center: { lat: 51.407660, lng: -0.220460 },
       zoom: 12
     });
+
+    // Find places - find location of 5 default places
+    this.findPlaces(map, this.state.locations);
+  }
+
+  // Returns LatLng location of places, given String of name
+  // @param {Object} map - google.maps.Map
+  // @param {Object[]} places - an array of objects containing place Strings
+  findPlaces(map, locations) {
+    // Create a PlacesService
+    var service = new window.google.maps.places.PlacesService(map);
+
+    // Create an array of location with more information from PlaceResult
+    var newLocations = [];
+
+    locations.forEach( location => {
+      // findPlaceFromQuery() returns a PlaceResult from a text String
+      service.findPlaceFromQuery(
+        //  Pass a request
+        {
+          // Pass the location title as the query to search
+          query: location.title,
+
+          // Pass fields, indicating what information you want about the place.
+          fields: ['geometry', 'formatted_address', 'name' ]
+        },
+
+        // Pass a callback function to get the PlaceResult and status of the search
+        function(result, status) {
+          // If the query has returned a result
+          if (status === 'OK') {
+            // Return a place object with an address and LatLng location
+            newLocations.push({
+              name: result[0].name,
+              address: result[0].formatted_address,
+              location: result[0].geometry.location
+            });
+          }
+          // If the query was unsuccessful, return the name only
+          else {
+            newLocations.push(location);
+          }
+        }
+      )
+    });
+
+    this.setState({
+      locations: newLocations
+    })
   }
 
   render() {

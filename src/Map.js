@@ -59,7 +59,7 @@ class Map extends Component {
           query: location.title,
 
           // Pass fields, indicating what information you want about the place.
-          fields: ['geometry', 'formatted_address', 'name' ]
+          fields: ['geometry', 'formatted_address', 'name', 'place_id' ]
         },
 
         // Pass a callback function to get the PlaceResult and status of the search
@@ -70,7 +70,8 @@ class Map extends Component {
             newLocations.push({
               name: result[0].name,
               address: result[0].formatted_address,
-              location: result[0].geometry.location
+              location: result[0].geometry.location,
+              placeId: result[0].place_id
             });
           }
           // If the query was unsuccessful, return the name only

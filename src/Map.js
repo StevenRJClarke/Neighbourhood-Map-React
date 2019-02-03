@@ -23,7 +23,7 @@ class Map extends Component {
 
     // Create the <script> that will call the Google Maps API and call initMap()
     const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${API}&callback=initMap`;
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${API}&libraries=places&callback=initMap`;
     script.async = true;
     script.defer = true;
 

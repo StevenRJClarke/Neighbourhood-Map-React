@@ -44,6 +44,8 @@ class Map extends Component {
   // @param {Object} map - google.maps.Map
   // @param {Object[]} places - an array of objects containing place Strings
   findPlaces(map, locations) {
+    let thisRef = this;
+
     // Create a PlacesService
     var service = new window.google.maps.places.PlacesService(map);
 
@@ -75,6 +77,10 @@ class Map extends Component {
             }
 
             newLocations.push(placeObject);
+
+            // Create a marker for the place
+            let places = [placeObject];
+            thisRef.createMarkersForPlaces(map, places);
           }
           // If the query was unsuccessful, return the name only
           else {
@@ -87,6 +93,20 @@ class Map extends Component {
     this.setState({
       locations: newLocations
     })
+  }
+
+  // Returns m marker for each place with a location
+  // @param {Object} map - google.maps.Map
+  // @param {Object[]} places - an array of objects containing place information (with locations)
+  createMarkersForPlaces(map, places) {
+    places.forEach(
+      place => {
+        let marker = new window.google.maps.Marker({
+          map: map,
+          position: place.location
+        });
+      }
+    )
   }
 
   render() {

@@ -10,7 +10,8 @@ class Map extends Component {
       { title: 'Wimbledon Common' },
       { title: 'Chessington World of Adventures' },
       { title: 'Clapham Common' }
-    ]
+    ],
+    markers: []
   }
 
   componentDidMount() {

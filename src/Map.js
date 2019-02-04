@@ -83,10 +83,6 @@ class Map extends Component {
         }
       )
     });
-
-    this.setState({
-      locations: newLocations
-    })
   }
 
   // Returns m marker for each place with a location

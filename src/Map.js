@@ -67,12 +67,14 @@ class Map extends Component {
           // If the query has returned a result
           if (status === 'OK') {
             // Return a place object with an address and LatLng location
-            newLocations.push({
+            let placeObject = {
               name: result[0].name,
               address: result[0].formatted_address,
               location: result[0].geometry.location,
               placeId: result[0].place_id
-            });
+            }
+
+            newLocations.push(placeObject);
           }
           // If the query was unsuccessful, return the name only
           else {

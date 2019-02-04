@@ -4,13 +4,6 @@ import './App.css';
 class Map extends Component {
   state = {
     apiKey: process.env.REACT_APP_MAP_API_KEY,
-    locations: [
-      { title: 'Richmond Park' },
-      { title: 'Hampton Court' },
-      { title: 'Wimbledon Common' },
-      { title: 'Chessington World of Adventures' },
-      { title: 'Clapham Common' }
-    ],
     markers: []
   }
 

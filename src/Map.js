@@ -31,7 +31,7 @@ class Map extends Component {
     });
 
     // Find places - find location of 5 default places
-    this.findPlaces(map, this.state.locations);
+    this.findPlaces(map, this.props.locations);
   }
 
   // Returns LatLng location of places, given String of name

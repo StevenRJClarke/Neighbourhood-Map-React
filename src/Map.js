@@ -100,14 +100,22 @@ class Map extends Component {
   // @param {Object} map - google.maps.Map
   // @param {Object[]} places - an array of objects containing place information (with locations)
   createMarkersForPlaces(map, places) {
+    let marker;
+
     places.forEach(
       place => {
-        let marker = new window.google.maps.Marker({
+        marker = new window.google.maps.Marker({
           map: map,
           position: place.location
         });
       }
     )
+
+    let newMarkers = this.state.markers.concat(marker);
+
+    this.setState({
+      markers: newMarkers
+    })
   }
 
   render() {

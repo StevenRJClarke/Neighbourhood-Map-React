@@ -14,6 +14,12 @@ class App extends Component {
     ]
   }
 
+  // Updates location state
+  // @param {Object[]} locations - an array of objects containing place information (with locations)
+  getLocations = locations => this.setState({
+    locations: locations
+  })
+
   render() {
     return (
       <div className="App">

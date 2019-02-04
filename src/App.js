@@ -18,7 +18,9 @@ class App extends Component {
     return (
       <div className="App">
         <Sidebar/>
-        <Map/>
+        <Map
+          location={this.state.locations}
+        />
       </div>
     );
   }

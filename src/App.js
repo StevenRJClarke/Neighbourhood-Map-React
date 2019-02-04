@@ -26,6 +26,7 @@ class App extends Component {
         <Sidebar/>
         <Map
           location={this.state.locations}
+          getLocations={this.getLocations}
         />
       </div>
     );

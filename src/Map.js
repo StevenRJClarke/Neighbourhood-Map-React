@@ -83,6 +83,8 @@ class Map extends Component {
         }
       )
     });
+
+    this.props.getLocations(newLocations);
   }
 
   // Returns m marker for each place with a location

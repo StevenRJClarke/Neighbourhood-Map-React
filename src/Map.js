@@ -96,8 +96,12 @@ class Map extends Component {
         )
       })
     )
-
-    this.props.getLocations(newLocations);
+    // When all location elements have been updated, all the Promises have been passed
+    // (in an array) to Promise.all()
+    // Assuming all Promises resolve(), the value they return are the updated locations.
+    // Use this in the then()
+    .then( newLocations => thisRef.createMarkersForPlaces(map, newLocations) )
+    // this.props.getLocations(newLocations);
   }
 
   // Returns m marker for each place with a location

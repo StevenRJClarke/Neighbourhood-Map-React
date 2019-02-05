@@ -52,7 +52,7 @@ class Map extends Component {
         //  Pass a request
         {
           // Pass the location title as the query to search
-          query: location.title,
+          query: location.name,
 
           // Pass fields, indicating what information you want about the place.
           fields: ['geometry', 'formatted_address', 'name', 'place_id' ]

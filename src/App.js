@@ -23,7 +23,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Sidebar/>
+        <Sidebar
+          locations={this.state.locations}
+        />
         <Map
           locations={this.state.locations}
           getLocations={this.getLocations}

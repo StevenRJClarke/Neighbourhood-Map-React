@@ -6,11 +6,11 @@ import './App.css';
 class App extends Component {
   state = {
     locations: [
-      { title: 'Richmond Park' },
-      { title: 'Hampton Court' },
-      { title: 'Wimbledon Common' },
-      { title: 'Chessington World of Adventures' },
-      { title: 'Clapham Common' }
+      { name: 'Richmond Park', placeId: '1' },
+      { name: 'Hampton Court', placeId: '2' },
+      { name: 'Wimbledon Common', placeId: '3' },
+      { name: 'Chessington World of Adventures', placeId: '4' },
+      { name: 'Clapham Common', placeId: '5' }
     ]
   }
 

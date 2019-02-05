@@ -46,6 +46,11 @@ class Map extends Component {
     // Create an array of location with more information from PlaceResult
     var newLocations = [];
 
+    // Each element in our location array is being passed into an asynchroous
+    // function, where it is updated. Each element must updated BEFORE sending
+    // the updated array to the <App/>.
+
+    // Use Promise.all(), which takes in an array of Promises
     locations.forEach( location => {
       // findPlaceFromQuery() returns a PlaceResult from a text String
       service.findPlaceFromQuery(

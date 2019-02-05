@@ -52,36 +52,46 @@ class Map extends Component {
 
     // Use Promise.all(), which takes in an array of Promises
     let locationsPromise = Promise.all(
+
+      // Promise.all() needs an array of Promises, use map() to return an array...
+
       locations.map( location => {
-        // findPlaceFromQuery() returns a PlaceResult from a text String
-        service.findPlaceFromQuery(
-          //  Pass a request
-          {
-            // Pass the location title as the query to search
-            query: location.name,
+        // ... of Promises. Wrap in a Promise
+        return new Promise(
+          (resolve, reject) => {
+            // Now we update each location using Google Maps Places API
 
-            // Pass fields, indicating what information you want about the place.
-            fields: ['geometry', 'formatted_address', 'name', 'place_id' ]
-          },
+            // findPlaceFromQuery() returns a PlaceResult from a text String
+            service.findPlaceFromQuery(
+              //  Pass a request
+              {
+                // Pass the location title as the query to search
+                query: location.name,
 
-          // Pass a callback function to get the PlaceResult and status of the search
-          function(result, status) {
-            // If the query has returned a result
-            if (status === 'OK') {
-              // Return a place object with an address and LatLng location
-              let placeObject = {
-                name: result[0].name,
-                address: result[0].formatted_address,
-                location: result[0].geometry.location,
-                placeId: result[0].place_id
+                // Pass fields, indicating what information you want about the place.
+                fields: ['geometry', 'formatted_address', 'name', 'place_id' ]
+              },
+
+              // Pass a callback function to get the PlaceResult and status of the search
+              function(result, status) {
+                // If the query has returned a result
+                if (status === 'OK') {
+                  // Return a place object with an address and LatLng location
+                  let placeObject = {
+                    name: result[0].name,
+                    address: result[0].formatted_address,
+                    location: result[0].geometry.location,
+                    placeId: result[0].place_id
+                  }
+
+                  resolve(placeObject)
+                }
+                // If the query was unsuccessful, return the name only
+                else {
+                  reject()
+                }
               }
-
-              return placeObject
-            }
-            // If the query was unsuccessful, return the name only
-            else {
-              return location
-            }
+            )
           }
         )
       })

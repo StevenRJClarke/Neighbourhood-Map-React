@@ -52,7 +52,7 @@ class Map extends Component {
 
     // Use Promise.all(), which takes in an array of Promises
     let locationsPromise = Promise.all(
-      locations.forEach( location => {
+      locations.map( location => {
         // findPlaceFromQuery() returns a PlaceResult from a text String
         service.findPlaceFromQuery(
           //  Pass a request
@@ -76,15 +76,11 @@ class Map extends Component {
                 placeId: result[0].place_id
               }
 
-              newLocations.push(placeObject);
-
-              // Create a marker for the place
-              let places = [placeObject];
-              thisRef.createMarkersForPlaces(map, places);
+              return placeObject
             }
             // If the query was unsuccessful, return the name only
             else {
-              newLocations.push(location);
+              return location
             }
           }
         )

@@ -96,6 +96,7 @@ class Map extends Component {
     places.forEach(
       place => {
         marker = new window.google.maps.Marker({
+          animation: window.google.maps.Animation.DROP,
           map: map,
           position: place.location
         });

@@ -51,43 +51,45 @@ class Map extends Component {
     // the updated array to the <App/>.
 
     // Use Promise.all(), which takes in an array of Promises
-    locations.forEach( location => {
-      // findPlaceFromQuery() returns a PlaceResult from a text String
-      service.findPlaceFromQuery(
-        //  Pass a request
-        {
-          // Pass the location title as the query to search
-          query: location.name,
+    let locationsPromise = Promise.all(
+      locations.forEach( location => {
+        // findPlaceFromQuery() returns a PlaceResult from a text String
+        service.findPlaceFromQuery(
+          //  Pass a request
+          {
+            // Pass the location title as the query to search
+            query: location.name,
 
-          // Pass fields, indicating what information you want about the place.
-          fields: ['geometry', 'formatted_address', 'name', 'place_id' ]
-        },
+            // Pass fields, indicating what information you want about the place.
+            fields: ['geometry', 'formatted_address', 'name', 'place_id' ]
+          },
 
-        // Pass a callback function to get the PlaceResult and status of the search
-        function(result, status) {
-          // If the query has returned a result
-          if (status === 'OK') {
-            // Return a place object with an address and LatLng location
-            let placeObject = {
-              name: result[0].name,
-              address: result[0].formatted_address,
-              location: result[0].geometry.location,
-              placeId: result[0].place_id
+          // Pass a callback function to get the PlaceResult and status of the search
+          function(result, status) {
+            // If the query has returned a result
+            if (status === 'OK') {
+              // Return a place object with an address and LatLng location
+              let placeObject = {
+                name: result[0].name,
+                address: result[0].formatted_address,
+                location: result[0].geometry.location,
+                placeId: result[0].place_id
+              }
+
+              newLocations.push(placeObject);
+
+              // Create a marker for the place
+              let places = [placeObject];
+              thisRef.createMarkersForPlaces(map, places);
             }
-
-            newLocations.push(placeObject);
-
-            // Create a marker for the place
-            let places = [placeObject];
-            thisRef.createMarkersForPlaces(map, places);
+            // If the query was unsuccessful, return the name only
+            else {
+              newLocations.push(location);
+            }
           }
-          // If the query was unsuccessful, return the name only
-          else {
-            newLocations.push(location);
-          }
-        }
-      )
-    });
+        )
+      })
+    )
 
     this.props.getLocations(newLocations);
   }

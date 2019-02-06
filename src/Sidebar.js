@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import LocationFilter from './LocationFilter'
 import './App.css';
 
 class Sidebar extends Component {

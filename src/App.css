@@ -28,6 +28,14 @@
   color: #61dafb;
 }
 
+/*Location Filter*/
+
+#location-input {
+  font-size: 16px;
+  margin: 20px 0 0 40px;
+  padding: 5px;
+}
+
 /*Sidebar*/
 
 .Sidebar {

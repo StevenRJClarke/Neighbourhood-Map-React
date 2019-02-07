@@ -11,6 +11,7 @@ class LocationFilter extends Component {
       <div className="location-filter">
         <input id="location-input" type="text" placeholder="Filter locations"
           value={this.state.query}
+          onChange={ event => this.updateQuery(event.target.value) }
         />
       </div>
     );

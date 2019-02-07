@@ -6,6 +6,11 @@ class LocationFilter extends Component {
     query: ''
   }
 
+  // When the input text is changed, change the query state
+  updateQuery = query => this.setState({
+    query: query.trim()
+  });
+
   render() {
     return (
       <div className="location-filter">

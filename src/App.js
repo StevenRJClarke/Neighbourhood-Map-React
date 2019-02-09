@@ -30,6 +30,17 @@ class App extends Component {
   })
 
   render() {
+    // Filter locations based on the text input
+    // Create a regular expression matcher to filter locations
+    let showingLocations;
+
+    if (this.state.query) {
+      let match = new RegExp(escapeRegExp(this.state.query), 'i');
+      showingLocations = this.state.locations.filter( location => match.test(location.name) );
+    } else {
+      showingLocations = this.state.locations;
+    }
+
     return (
       <div className="App">
         <Sidebar

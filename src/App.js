@@ -48,7 +48,7 @@ class App extends Component {
           getFilter={this.getFilter}
         />
         <Map
-          locations={this.state.locations}
+          locations={showingLocations}
           getLocations={this.getLocations}
         />
       </div>

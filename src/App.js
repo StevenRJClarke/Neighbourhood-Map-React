@@ -32,6 +32,7 @@ class App extends Component {
       <div className="App">
         <Sidebar
           locations={this.state.locations}
+          getFilter={this.getFilter}
         />
         <Map
           locations={this.state.locations}

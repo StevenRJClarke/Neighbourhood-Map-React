@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Sidebar from './Sidebar'
 import Map from './Map'
 import escapeRegExp from 'escape-string-regexp'
+import sortBy from 'sort-by'
 import './App.css';
 
 class App extends Component {

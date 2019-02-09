@@ -44,7 +44,7 @@ class App extends Component {
     return (
       <div className="App">
         <Sidebar
-          locations={this.state.locations}
+          locations={showingLocations}
           getFilter={this.getFilter}
         />
         <Map

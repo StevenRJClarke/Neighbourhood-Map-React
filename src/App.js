@@ -34,8 +34,8 @@ class App extends Component {
     // Create a regular expression matcher to filter locations
     let showingLocations;
 
-    if (this.state.query) {
-      let match = new RegExp(escapeRegExp(this.state.query), 'i');
+    if (this.state.filter) {
+      let match = new RegExp(escapeRegExp(this.state.filter), 'i');
       showingLocations = this.state.locations.filter( location => match.test(location.name) );
     } else {
       showingLocations = this.state.locations;

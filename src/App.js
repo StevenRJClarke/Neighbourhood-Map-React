@@ -21,6 +21,12 @@ class App extends Component {
     locations: locations
   })
 
+  // Updates filter state
+  // @param {String} query - a query string to filter locations
+  getFilter = query => this.setState({
+    filter: query
+  })
+
   render() {
     return (
       <div className="App">

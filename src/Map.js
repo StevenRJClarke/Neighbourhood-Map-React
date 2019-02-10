@@ -115,6 +115,9 @@ class Map extends Component {
 
       // Create a marker for each location
       thisRef.createMarkersForPlaces(map, newLocations);
+
+      // Create infowindows for markers
+      thisRef.createInfoWindows(map);
     } )
   }
 
@@ -141,6 +144,12 @@ class Map extends Component {
     this.setState({
       markers: markers
     })
+  }
+
+  // Add infowindows to markers
+  // @param {Object} map - google.maps.Map
+  createInfoWindows(map) {
+    
   }
 
   // Filters markers based on text input

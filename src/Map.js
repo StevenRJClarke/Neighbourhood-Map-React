@@ -119,7 +119,8 @@ class Map extends Component {
   // @param {Object} map - google.maps.Map
   // @param {Object[]} places - an array of objects containing place information (with locations)
   createMarkersForPlaces(map, places) {
-    let marker;
+    let marker,
+        markers =[];
 
     places.forEach(
       place => {
@@ -128,13 +129,13 @@ class Map extends Component {
           map: map,
           position: place.location
         });
+
+        markers.push(marker);
       }
     )
 
-    let newMarkers = this.state.markers.concat(marker);
-
     this.setState({
-      markers: newMarkers
+      markers: markers
     })
   }
 

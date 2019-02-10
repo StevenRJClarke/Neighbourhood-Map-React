@@ -41,6 +41,8 @@ class App extends Component {
       showingLocations = this.state.locations;
     }
 
+    showingLocations.sort(sortBy('name'));
+
     return (
       <div className="App">
         <Sidebar

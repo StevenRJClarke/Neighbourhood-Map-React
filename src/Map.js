@@ -141,9 +141,24 @@ class Map extends Component {
   }
 
   // Filters markers based on text input
-  // @param {Object} map - google.maps.Map
-  filterMarkers(map) {
+  filterMarkers() {
+    // Find names of filtered locations
+    let locationNames = this.props.locations.map( location => location.name );
 
+    // Loop through markers array in state
+    this.state.markers.forEach(
+      marker => {
+        // If the marker title (given by location name) is in the array
+        // of filtered location names, display it
+        if (locationNames.includes(marker.title))
+          marker.setMap(this.state.map);
+
+        // If the marker title is NOT in the array of filtered location
+        // names, display it
+        else
+          marker.setMap(null);
+      }
+    );
   }
 
   render() {

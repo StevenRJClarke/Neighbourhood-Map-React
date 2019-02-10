@@ -159,7 +159,16 @@ class Map extends Component {
         // Add a listener so that the infowindow is displayed when a marker is
         // clicked
         marker.addListener('click', function() {
-          infoWindow.open(map, marker);
+          // Only open the infowindow if it is not already opened
+          if (infoWindow.marker !== marker) {
+            infoWindow.marker = marker;
+            infoWindow.open(map, marker);
+
+            // Close the infowindow if the infowindow is clicked
+            infoWindow.addListener('closeclick', function() {
+              infoWindow.marker = null;
+            })
+          }
         });
       }
     )

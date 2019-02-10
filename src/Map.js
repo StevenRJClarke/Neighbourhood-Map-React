@@ -123,7 +123,7 @@ class Map extends Component {
   // @param {Object[]} places - an array of objects containing place information (with locations)
   createMarkersForPlaces(map, places) {
     let marker,
-        markers =[];
+        markers = [];
 
     places.forEach(
       place => {

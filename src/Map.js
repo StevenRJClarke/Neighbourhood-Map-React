@@ -34,6 +34,10 @@ class Map extends Component {
     this.findPlaces(map, this.props.locations);
   }
 
+  componentDidUpdate() {
+    
+  }
+
   // Returns LatLng location of places, given String of name
   // @param {Object} map - google.maps.Map
   // @param {Object[]} places - an array of objects containing place Strings

@@ -110,7 +110,10 @@ class Map extends Component {
     // Assuming all Promises resolve(), the value they return are the updated locations.
     // Use this in the then()
     .then( newLocations => {
+      // Update the locations with more information
       thisRef.props.getLocations(newLocations);
+
+      // Create a marker for each location
       thisRef.createMarkersForPlaces(map, newLocations);
     } )
   }

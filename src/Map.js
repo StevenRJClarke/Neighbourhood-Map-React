@@ -127,7 +127,8 @@ class Map extends Component {
         marker = new window.google.maps.Marker({
           animation: window.google.maps.Animation.DROP,
           map: map,
-          position: place.location
+          position: place.location,
+          title: place.name
         });
 
         markers.push(marker);

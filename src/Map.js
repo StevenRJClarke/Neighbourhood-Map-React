@@ -110,7 +110,7 @@ class Map extends Component {
     } )
   }
 
-  // Returns m marker for each place with a location
+  // Returns a marker for each place with a location
   // @param {Object} map - google.maps.Map
   // @param {Object[]} places - an array of objects containing place information (with locations)
   createMarkersForPlaces(map, places) {

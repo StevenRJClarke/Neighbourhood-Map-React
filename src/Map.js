@@ -133,6 +133,12 @@ class Map extends Component {
     })
   }
 
+  // Filters markers based on text input
+  // @param {Object} map - google.maps.Map
+  filterMarkers(map) {
+
+  }
+
   render() {
     return (
       <div id="map" className="Map">

@@ -31,6 +31,10 @@ class Map extends Component {
       zoom: 12
     });
 
+    this.setState({
+      map: map
+    });
+
     // Find places - find location of 5 default places
     this.findPlaces(map, this.props.locations);
   }

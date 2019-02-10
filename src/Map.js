@@ -35,7 +35,7 @@ class Map extends Component {
   }
 
   componentDidUpdate() {
-    
+    this.filterMarkers()
   }
 
   // Returns LatLng location of places, given String of name

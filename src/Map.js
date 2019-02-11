@@ -159,12 +159,18 @@ class Map extends Component {
   // Add infowindows to markers
   // @param {Object} map - google.maps.Map
   createInfoWindows(map) {
+    let infoWindow,
+        infoWindows = [];
+
     this.state.markers.forEach(
       marker => {
         // Create the content to displayed in each infowindow
         let infoWindow = new window.google.maps.InfoWindow({
           content: `<h3>${marker.title}</h3>`
         });
+
+        // Add infowindow to an array
+        infoWindows.push(infoWindow);
 
         // Add a listener so that the infowindow is displayed when a marker is
         // clicked
@@ -189,6 +195,10 @@ class Map extends Component {
         });
       }
     )
+
+    this.setState({
+      infoWindows: infoWindows
+    })
   }
 
   // Filters markers based on text input

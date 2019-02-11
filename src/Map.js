@@ -222,6 +222,10 @@ class Map extends Component {
     );
   }
 
+  // Animates marker at a location and displays its infowindow when that location
+  // is clicked in the sidebar
+  showLocation = location => {}
+
   render() {
     return (
       <div id="map" className="Map">

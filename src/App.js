@@ -14,7 +14,8 @@ class App extends Component {
       { name: 'Chessington World of Adventures', placeId: '4' },
       { name: 'Clapham Common', placeId: '5' }
     ],
-    filter: ''
+    filter: '',
+    locationClicked: ''
   }
 
   // Updates location state

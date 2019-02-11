@@ -60,6 +60,7 @@ class App extends Component {
         <Map
           locations={showingLocations}
           getLocations={this.getLocations}
+          locationClicked={this.state.locationClicked}
         />
       </div>
     );

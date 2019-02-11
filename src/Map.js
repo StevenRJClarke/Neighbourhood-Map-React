@@ -40,6 +40,8 @@ class Map extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    // See if filtered locations has changed. Only show those markers that have
+    // been filtered
     this.filterMarkers()
   }
 

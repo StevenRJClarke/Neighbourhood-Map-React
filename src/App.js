@@ -32,7 +32,9 @@ class App extends Component {
 
   // Handles clicks on locations in the sidebar
   // @param {String} location - the location that has been clicked
-  handleClickOnSidebar = location => {}
+  handleClickOnSidebar = location => this.setState({
+    locationClicked: location
+  })
 
   render() {
     // Filter locations based on the text input

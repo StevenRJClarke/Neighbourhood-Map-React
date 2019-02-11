@@ -49,7 +49,7 @@ class Map extends Component {
     // The clicked location (locationClicked) is a prop - if a new location
     // is clicked, the current prop will be different to the previous prop
     if (prevProps.locationClicked !== this.props.locationClicked) {
-      this.showLocation();
+      this.showLocation(this.props.locationClicked);
     }
   }
 

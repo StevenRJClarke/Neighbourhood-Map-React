@@ -43,6 +43,13 @@ class Map extends Component {
     // See if filtered locations has changed. Only show those markers that have
     // been filtered
     this.filterMarkers()
+
+    // See if a new location has been clicked on the sidebar.
+    // The clicked location (locationClicked) is a prop - if a new location
+    // is clicked, the current prop will be different to the previous prop
+    if (prevProps.locationClicked !== this.props.locationClicked) {
+
+    }
   }
 
   // Returns LatLng location of places, given String of name

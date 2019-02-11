@@ -50,7 +50,8 @@
 }
 
 .location-item {
-  padding: 5px 0 5px 0;
+  cursor: pointer;
+  margin: 10px 0 5px 0;
 }
 
 /*Map CSS*/

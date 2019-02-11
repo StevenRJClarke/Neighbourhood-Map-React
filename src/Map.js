@@ -5,7 +5,8 @@ class Map extends Component {
   state = {
     apiKey: process.env.REACT_APP_MAP_API_KEY,
     map: '',
-    markers: []
+    markers: [],
+    infoWindows: []
   }
 
   componentDidMount() {

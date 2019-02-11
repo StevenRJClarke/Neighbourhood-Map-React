@@ -29,6 +29,10 @@ class App extends Component {
     filter: query
   })
 
+  // Handles clicks on locations in the sidebar
+  // @param {String} location - the location that has been clicked
+  handleClickOnSidebar = location => {}
+
   render() {
     // Filter locations based on the text input
     // Create a regular expression matcher to filter locations
@@ -48,6 +52,7 @@ class App extends Component {
         <Sidebar
           locations={showingLocations}
           getFilter={this.getFilter}
+          handleClickOnSidebar={this.handleClickOnSidebar}
         />
         <Map
           locations={showingLocations}

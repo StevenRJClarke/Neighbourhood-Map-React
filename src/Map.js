@@ -39,7 +39,7 @@ class Map extends Component {
     this.findPlaces(map, this.props.locations);
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     this.filterMarkers()
   }
 

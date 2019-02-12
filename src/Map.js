@@ -241,6 +241,8 @@ class Map extends Component {
     let selectedInfoWindow = this.state.infoWindows.find(
       infoWindow => infoWindow.content.includes(location)
     );
+
+    this.animateMarker(selectedMarker);
   }
 
   render() {

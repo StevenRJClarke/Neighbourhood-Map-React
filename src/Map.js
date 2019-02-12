@@ -160,7 +160,8 @@ class Map extends Component {
   // @param {Object} map - google.maps.Map
   createInfoWindows(map) {
     let infoWindow,
-        infoWindows = [];
+        infoWindows = [],
+        thisRef = this;
 
     this.state.markers.forEach(
       marker => {
@@ -178,7 +179,7 @@ class Map extends Component {
           // Only open the infowindow if it is not already opened
           if (infoWindow.marker !== marker) {
             // Cause the marker to bounce for 2.5 seconds when clicked
-
+            thisRef.animateMarker(marker);
 
             infoWindow.marker = marker;
             infoWindow.open(map, marker);

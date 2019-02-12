@@ -230,6 +230,11 @@ class Map extends Component {
     let selectedMarker = this.state.markers.find(
       marker => marker.title === location
     );
+
+    // Find the infowindow at this location
+    let selectedInfoWindow = this.state.infoWindows.find(
+      infoWindow => infoWindow.content.includes(location)
+    );
   }
 
   render() {

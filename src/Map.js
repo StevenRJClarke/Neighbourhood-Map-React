@@ -242,6 +242,17 @@ class Map extends Component {
     );
 
     this.animateMarker(selectedMarker);
+
+    // Close all currently open infowindows.
+    // Find all other infowindows (that haven't been selected)...
+    this.state.infoWindows.filter(
+      infowindow => infowindow !== selectedInfoWindow
+    )
+    // ...Loop over them...
+    .forEach(
+      // ... and close them
+      infowindow => infowindow.close()
+    )
   }
 
   render() {

@@ -182,7 +182,8 @@ class Map extends Component {
             window.setTimeout(
               function() {
                 marker.setAnimation(null)
-              }, 2500)
+              }, 2500
+            )
 
             infoWindow.marker = marker;
             infoWindow.open(map, marker);

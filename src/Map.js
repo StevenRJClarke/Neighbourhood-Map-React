@@ -40,15 +40,14 @@ class Map extends Component {
     this.findPlaces(map, this.props.locations);
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate() {
     // See if filtered locations has changed. Only show those markers that have
     // been filtered
     this.filterMarkers()
 
-    // See if a new location has been clicked on the sidebar.
-    // The clicked location (locationClicked) is a prop - if a new location
-    // is clicked, the current prop will be different to the previous prop
-    if (prevProps.locationClicked !== this.props.locationClicked) {
+    // If a location is clicked on the sidebar, animate the marker and show
+    // its infowindow
+    if (this.props.locationClicked) {
       this.showLocation(this.props.locationClicked);
     }
   }

@@ -178,12 +178,7 @@ class Map extends Component {
           // Only open the infowindow if it is not already opened
           if (infoWindow.marker !== marker) {
             // Cause the marker to bounce for 2.5 seconds when clicked
-            marker.setAnimation(window.google.maps.Animation.BOUNCE);
-            window.setTimeout(
-              function() {
-                marker.setAnimation(null)
-              }, 2500
-            )
+
 
             infoWindow.marker = marker;
             infoWindow.open(map, marker);
@@ -200,6 +195,16 @@ class Map extends Component {
     this.setState({
       infoWindows: infoWindows
     })
+  }
+
+  // Animate marker
+  animateMarker(marker) {
+    marker.setAnimation(window.google.maps.Animation.BOUNCE);
+    window.setTimeout(
+      function() {
+        marker.setAnimation(null)
+      }, 2500
+    )
   }
 
   // Filters markers based on text input

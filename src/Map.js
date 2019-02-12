@@ -253,6 +253,8 @@ class Map extends Component {
       // ... and close them
       infowindow => infowindow.close()
     )
+
+    selectedInfoWindow.open(this.state.map, selectedMarker);
   }
 
   render() {

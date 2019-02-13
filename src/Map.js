@@ -277,6 +277,18 @@ class Map extends Component {
       // Get response object and return venue id
       response => response.response.groups[0].items[0].venue.id
     )
+    .then(
+      // Fetch venue details from venue id
+      id => fetch(`https://api.foursquare.com/v2/venues/${id}?client_id=GUA2IQTSLKUOJ1YDJNHF5VJ2FWIAQQNLXJH2ISPWQ2BTCFOG&client_secret=TCLGU4JSWBSNLMMF42UU5YJXPJKHRTHXJJDNVDJ1RK25GX0V&v=20180323&limit=1`)
+    )
+    .then(
+      // Get response object from returned Promise
+      response => response.json()
+    )
+    .then(
+      // Get response object
+      response => {}
+    )
     .catch();
   }
 

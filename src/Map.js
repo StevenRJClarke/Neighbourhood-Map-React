@@ -236,6 +236,7 @@ class Map extends Component {
 
   // Animates marker at a location and displays its infowindow when that location
   // is clicked in the sidebar
+  // @param {String} location - name of location
   showLocation = location => {
     // Find the marker at this location
     let selectedMarker = this.state.markers.find(

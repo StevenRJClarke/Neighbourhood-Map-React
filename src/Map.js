@@ -305,7 +305,12 @@ class Map extends Component {
   // Handles errors in Fetch API, where a request for a Response is not successful.
   // @param {Promise} response - Promise returned by fetch()
   handleErrors(response) {
-    
+    // Throw an error if fetch() request unsuccessful
+    if (!response.ok) {
+      throw Error(response.statusText);
+    }
+
+    return response;
   }
 
   render() {

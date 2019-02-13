@@ -164,6 +164,11 @@ class Map extends Component {
 
     this.state.markers.forEach(
       marker => {
+
+        // Fetch the Fourquare API to get more information about the location
+        // to put in the infowindow
+        thisRef.getFoursquareInfo(marker);
+
         // Create the content to displayed in each infowindow
         let infoWindow = new window.google.maps.InfoWindow({
           content: `<h3>${marker.title}</h3>`

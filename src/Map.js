@@ -287,9 +287,19 @@ class Map extends Component {
     )
     .then(
       // Get response object
-      response => {}
+      response => {
+        // Check response object is returned
+        let venue = response.response.venue;
+
+        return {
+          description: venue.description,
+          likes: venue.likes,
+          photo: `${venue.bestPhoto.prefix}36x100${venue.bestPhoto.suffix}`
+        }
+      }
     )
-    .catch();
+    .catch(
+    )
   }
 
   render() {

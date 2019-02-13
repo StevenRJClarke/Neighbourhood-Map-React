@@ -268,7 +268,9 @@ class Map extends Component {
   // Get more detailed information about the location to show on the infowindow
   // @param {Object} marker - google.maps.Marker
   getFoursquareInfo(marker) {
-
+    fetch()
+    .then()
+    .catch();
   }
 
   render() {

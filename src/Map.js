@@ -268,7 +268,8 @@ class Map extends Component {
   // Get more detailed information about the location to show on the infowindow
   // @param {Object} marker - google.maps.Marker
   getFoursquareInfo(marker) {
-    let thisRef = this;
+    let thisRef = this,
+        venueInfo = {};
 
     fetch(`https://api.foursquare.com/v2/venues/explore?client_id=GUA2IQTSLKUOJ1YDJNHF5VJ2FWIAQQNLXJH2ISPWQ2BTCFOG&client_secret=TCLGU4JSWBSNLMMF42UU5YJXPJKHRTHXJJDNVDJ1RK25GX0V&v=20180323&limit=1&ll=${marker.position.lat()},${marker.position.lng()}`)
     .then(thisRef.handleErrors)
@@ -295,7 +296,7 @@ class Map extends Component {
         // Check response object is returned
         let venue = response.response.venue;
 
-        return {
+        venueInfo = {
           description: venue.description,
           likes: venue.likes,
           photo: `${venue.bestPhoto.prefix}36x100${venue.bestPhoto.suffix}`
@@ -303,7 +304,20 @@ class Map extends Component {
       }
     )
     .catch(
-      error => console.log(error)
+      error => {
+        console.log(error);
+
+        venueInfo = {
+          description: '',
+          likes: '',
+          photo: ''
+        }
+      }
+    )
+    .finally(
+      () => {
+        return venueInfo;
+      }
     )
   }
 

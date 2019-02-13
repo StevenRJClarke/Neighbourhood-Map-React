@@ -262,6 +262,13 @@ class Map extends Component {
     selectedInfoWindow.open(this.state.map, selectedMarker);
   }
 
+  // Fetches Foursquare Places API and returns a Response object.
+  // Get more detailed information about the location to show on the infowindow
+  // @param {Object} marker - google.maps.Marker
+  getFoursquareInfo(marker) {
+
+  }
+
   render() {
     return (
       <div id="map" className="Map">

@@ -268,7 +268,10 @@ class Map extends Component {
   // Get more detailed information about the location to show on the infowindow
   // @param {Object} marker - google.maps.Marker
   getFoursquareInfo(marker) {
+    let thisRef = this;
+
     fetch(`https://api.foursquare.com/v2/venues/explore?client_id=GUA2IQTSLKUOJ1YDJNHF5VJ2FWIAQQNLXJH2ISPWQ2BTCFOG&client_secret=TCLGU4JSWBSNLMMF42UU5YJXPJKHRTHXJJDNVDJ1RK25GX0V&v=20180323&limit=1&ll=${marker.position.lat()},${marker.position.lng()}`)
+    .then(thisRef.handleErrors)
     .then(
       // Get response object from returned Promise
       response => response.json()
@@ -281,6 +284,7 @@ class Map extends Component {
       // Fetch venue details from venue id
       id => fetch(`https://api.foursquare.com/v2/venues/${id}?client_id=GUA2IQTSLKUOJ1YDJNHF5VJ2FWIAQQNLXJH2ISPWQ2BTCFOG&client_secret=TCLGU4JSWBSNLMMF42UU5YJXPJKHRTHXJJDNVDJ1RK25GX0V&v=20180323&limit=1`)
     )
+    .then(thisRef.handleErrors)
     .then(
       // Get response object from returned Promise
       response => response.json()

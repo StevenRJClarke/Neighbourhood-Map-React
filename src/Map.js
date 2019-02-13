@@ -274,8 +274,8 @@ class Map extends Component {
       response => response.json()
     )
     .then(
-      // Get response object
-      response => {}
+      // Get response object and return venue id
+      response => response.response.groups[0].items[0].venue.id
     )
     .catch();
   }

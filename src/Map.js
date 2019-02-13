@@ -203,6 +203,7 @@ class Map extends Component {
   }
 
   // Animate marker
+  // @param {Object} marker - google.maps.Marker
   animateMarker(marker) {
     marker.setAnimation(window.google.maps.Animation.BOUNCE);
     window.setTimeout(

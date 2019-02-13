@@ -303,6 +303,7 @@ class Map extends Component {
       }
     )
     .catch(
+      error => console.log(error)
     )
   }
 

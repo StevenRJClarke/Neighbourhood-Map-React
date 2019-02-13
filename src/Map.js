@@ -170,7 +170,7 @@ class Map extends Component {
         thisRef.getFoursquareInfo(marker);
 
         // Create the content to displayed in each infowindow
-        let infoWindow = new window.google.maps.InfoWindow({
+        infoWindow = new window.google.maps.InfoWindow({
           content: `<h3>${marker.title}</h3>`
         });
 

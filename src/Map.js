@@ -160,6 +160,7 @@ class Map extends Component {
   createInfoWindows(map) {
     let infoWindow,
         infoWindows = [],
+        venueInfo = {},
         thisRef = this;
 
     this.state.markers.forEach(
@@ -167,32 +168,78 @@ class Map extends Component {
 
         // Fetch the Fourquare API to get more information about the location
         // to put in the infowindow
-        thisRef.getFoursquareInfo(marker);
+        fetch(`https://api.foursquare.com/v2/venues/explore?client_id=GUA2IQTSLKUOJ1YDJNHF5VJ2FWIAQQNLXJH2ISPWQ2BTCFOG&client_secret=TCLGU4JSWBSNLMMF42UU5YJXPJKHRTHXJJDNVDJ1RK25GX0V&v=20180323&limit=1&ll=${marker.position.lat()},${marker.position.lng()}`)
+        .then(thisRef.handleErrors)
+        .then(
+          // Get response object from returned Promise
+          response => response.json()
+        )
+        .then(
+          // Get response object and return venue id
+          response => response.response.groups[0].items[0].venue.id
+        )
+        .then(
+          // Fetch venue details from venue id
+          id => fetch(`https://api.foursquare.com/v2/venues/${id}?client_id=GUA2IQTSLKUOJ1YDJNHF5VJ2FWIAQQNLXJH2ISPWQ2BTCFOG&client_secret=TCLGU4JSWBSNLMMF42UU5YJXPJKHRTHXJJDNVDJ1RK25GX0V&v=20180323&limit=1`)
+        )
+        .then(thisRef.handleErrors)
+        .then(
+          // Get response object from returned Promise
+          response => response.json()
+        )
+        .then(
+          // Get response object
+          response => {
+            // Check response object is returned
+            let venue = response.response.venue;
 
-        // Create the content to displayed in each infowindow
-        infoWindow = new window.google.maps.InfoWindow({
-          content: `<h3>${marker.title}</h3>`
-        });
-
-        // Add infowindow to an array
-        infoWindows.push(infoWindow);
-
-        // Add a listener so that the infowindow is displayed when a marker is
-        // clicked
-        marker.addListener('click', function() {
-          // Only open the infowindow if it is not already opened
-          if (infoWindow.marker !== marker) {
-            // Cause the marker to bounce for 2.5 seconds when clicked
-            thisRef.animateMarker(marker);
-
-            infoWindow.marker = marker;
-            infoWindow.open(map, marker);
-
-            // Close the infowindow if the infowindow is clicked
-            infoWindow.addListener('closeclick', function() {
-              infoWindow.marker = null;
-            })
+            venueInfo = {
+              description: venue.description,
+              likes: venue.likes,
+              photo: `${venue.bestPhoto.prefix}36x100${venue.bestPhoto.suffix}`
+            }
           }
+        )
+        .catch(
+          error => {
+            console.log(error);
+
+            venueInfo = {
+              description: '',
+              likes: '',
+              photo: ''
+            }
+          }
+        )
+        .finally(
+          () => {
+            // Create the content to displayed in each infowindow
+            infoWindow = new window.google.maps.InfoWindow({
+              content: `<h3>${marker.title}</h3>`
+            });
+
+            // Add infowindow to an array
+            infoWindows.push(infoWindow);
+
+            // Add a listener so that the infowindow is displayed when a marker is
+            // clicked
+            marker.addListener('click', function() {
+              // Only open the infowindow if it is not already opened
+              if (infoWindow.marker !== marker) {
+                // Cause the marker to bounce for 2.5 seconds when clicked
+                thisRef.animateMarker(marker);
+
+                infoWindow.marker = marker;
+                infoWindow.open(map, marker);
+
+                // Close the infowindow if the infowindow is clicked
+                infoWindow.addListener('closeclick', function() {
+                  infoWindow.marker = null;
+                })
+              }
+          }
+        )
+
         });
       }
     )
@@ -262,63 +309,6 @@ class Map extends Component {
     )
 
     selectedInfoWindow.open(this.state.map, selectedMarker);
-  }
-
-  // Fetches Foursquare Places API and returns a Response object.
-  // Get more detailed information about the location to show on the infowindow
-  // @param {Object} marker - google.maps.Marker
-  getFoursquareInfo(marker) {
-    let thisRef = this,
-        venueInfo = {};
-
-    fetch(`https://api.foursquare.com/v2/venues/explore?client_id=GUA2IQTSLKUOJ1YDJNHF5VJ2FWIAQQNLXJH2ISPWQ2BTCFOG&client_secret=TCLGU4JSWBSNLMMF42UU5YJXPJKHRTHXJJDNVDJ1RK25GX0V&v=20180323&limit=1&ll=${marker.position.lat()},${marker.position.lng()}`)
-    .then(thisRef.handleErrors)
-    .then(
-      // Get response object from returned Promise
-      response => response.json()
-    )
-    .then(
-      // Get response object and return venue id
-      response => response.response.groups[0].items[0].venue.id
-    )
-    .then(
-      // Fetch venue details from venue id
-      id => fetch(`https://api.foursquare.com/v2/venues/${id}?client_id=GUA2IQTSLKUOJ1YDJNHF5VJ2FWIAQQNLXJH2ISPWQ2BTCFOG&client_secret=TCLGU4JSWBSNLMMF42UU5YJXPJKHRTHXJJDNVDJ1RK25GX0V&v=20180323&limit=1`)
-    )
-    .then(thisRef.handleErrors)
-    .then(
-      // Get response object from returned Promise
-      response => response.json()
-    )
-    .then(
-      // Get response object
-      response => {
-        // Check response object is returned
-        let venue = response.response.venue;
-
-        venueInfo = {
-          description: venue.description,
-          likes: venue.likes,
-          photo: `${venue.bestPhoto.prefix}36x100${venue.bestPhoto.suffix}`
-        }
-      }
-    )
-    .catch(
-      error => {
-        console.log(error);
-
-        venueInfo = {
-          description: '',
-          likes: '',
-          photo: ''
-        }
-      }
-    )
-    .finally(
-      () => {
-        return venueInfo;
-      }
-    )
   }
 
   // Handles errors in Fetch API, where a request for a Response is not successful.

@@ -232,6 +232,13 @@ class Map extends Component {
               <p>${venueInfo.description}</p>`
             }
 
+            // Add count of likes
+            if (venueInfo.likes) {
+              infoWindow.content += `
+
+              <p>Likes: ${venueInfo.likes}</p>`
+            }
+
             // Add a listener so that the infowindow is displayed when a marker is
             // clicked
             marker.addListener('click', function() {

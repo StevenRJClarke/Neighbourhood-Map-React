@@ -11,7 +11,7 @@ class Sidebar extends Component {
         />
         <ul className="locations-list">
           {this.props.locations.map( location => (
-            <li key={location.placeId} className="location-item"
+            <li key={location.placeId} className="location-item" tabIndex="0"
               onClick={ event => this.props.handleClickOnSidebar(event.target.innerHTML)}
             >{location.name}</li>
           ))}

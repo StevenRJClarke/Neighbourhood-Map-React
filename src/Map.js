@@ -223,6 +223,15 @@ class Map extends Component {
             // Add infowindow to an array
             infoWindows.push(infoWindow);
 
+            // Add additional venue information from Foursquare to infowindow.
+
+            // Add description
+            if (venueInfo.description) {
+              infoWindow.content += `
+
+              <p>${venueInfo.description}</p>`
+            }
+
             // Add a listener so that the infowindow is displayed when a marker is
             // clicked
             marker.addListener('click', function() {

@@ -231,6 +231,13 @@ class Map extends Component {
 
               <p>${venueInfo.description}</p>`
             }
+            
+            // Add photo
+            if (venueInfo.photo) {
+              infoWindow.content += `
+
+              <img src="${venueInfo.photo}"/>`
+            }
 
             // Add count of likes
             if (venueInfo.likes) {

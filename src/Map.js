@@ -193,6 +193,7 @@ class Map extends Component {
             // Check response object is returned
             let venue = response.response.venue;
 
+            // Return venue information: a description, a count of likes and a photo
             venueInfo = {
               description: venue.description,
               likes: venue.likes,
@@ -204,6 +205,7 @@ class Map extends Component {
           error => {
             console.log(error);
 
+            // Return empty strings for venue information
             venueInfo = {
               description: '',
               likes: '',

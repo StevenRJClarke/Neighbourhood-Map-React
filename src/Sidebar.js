@@ -14,7 +14,7 @@ class Sidebar extends Component {
         </div>
         <ul className="locations-list" role="menu" aria-describedby="locations-list-description">
           {this.props.locations.map( location => (
-            <li key={location.placeId} className="location-item" tabIndex="0"
+            <li key={location.placeId} className="location-item" tabIndex="0" role="menuitem"
               onClick={ event => this.props.handleClickOnSidebar(event.target.innerHTML) }
               onKeyPress={ event => (event.key === "Enter") && this.props.handleClickOnSidebar(event.target.innerHTML) }
             >{location.name}</li>

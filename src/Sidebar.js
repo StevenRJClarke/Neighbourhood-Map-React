@@ -20,12 +20,14 @@ class Sidebar extends Component {
             (
               index < this.props.locations.length - 1
             ) ? (
-              <li key={location.placeId} className="location-item" tabIndex="0" aria-describedby="locations-item-description"
+              <li key={location.placeId} className="location-item"
+              tabIndex="0" aria-describedby="locations-item-description" aria-posinset={index + 1} aria-setsize={this.props.locations.length}
                 onClick={ event => this.props.handleClickOnSidebar(event.target.innerHTML) }
                 onKeyPress={ event => (event.key === "Enter") && this.props.handleClickOnSidebar(event.target.innerHTML) }
               >{location.name}</li>
             ) : (
-              <li key={location.placeId} className="location-item" tabIndex="0" aria-describedby="last-locations-item-description"
+              <li key={location.placeId} className="location-item"
+              tabIndex="0" aria-describedby="last-locations-item-description" aria-posinset={index + 1} aria-setsize={this.props.locations.length}
                 onClick={ event => this.props.handleClickOnSidebar(event.target.innerHTML) }
                 onKeyPress={ event => (event.key === "Enter") && this.props.handleClickOnSidebar(event.target.innerHTML) }
               >{location.name}</li>

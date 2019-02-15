@@ -14,7 +14,7 @@ class LocationFilter extends Component {
   render() {
     return (
       <div className="location-filter">
-        <label>Type in a location to filter the locations on the map</label>
+        <label for="location-input">Filter locations</label>
         <input id="location-input" type="text"
           value={this.state.query}
           onChange={ event => {

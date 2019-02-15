@@ -9,12 +9,12 @@ class Sidebar extends Component {
         <LocationFilter
           getFilter={this.props.getFilter}
         />
-        <div id="locations-list-description" hidden>
-          The locations display on the map are listed here. Cycle through them using the tab key and press enter to find out more information about that location
+        <div id="locations-item-description" hidden>
+          This is one of the locations displayed on the map. Press enter to find out more about this location. Press tab to hear the next location.
         </div>
-        <ul className="locations-list" role="menu" aria-describedby="locations-list-description">
+        <ul className="locations-list" role="menu">
           {this.props.locations.map( location => (
-            <li key={location.placeId} className="location-item" tabIndex="0" role="menuitem"
+            <li key={location.placeId} className="location-item" tabIndex="0" role="menuitem" aria-describedby="locations-item-description"
               onClick={ event => this.props.handleClickOnSidebar(event.target.innerHTML) }
               onKeyPress={ event => (event.key === "Enter") && this.props.handleClickOnSidebar(event.target.innerHTML) }
             >{location.name}</li>

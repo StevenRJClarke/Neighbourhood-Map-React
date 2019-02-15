@@ -9,7 +9,7 @@ class Sidebar extends Component {
         <LocationFilter
           getFilter={this.props.getFilter}
         />
-        <ul className="locations-list">
+        <ul className="locations-list" role="menu">
           {this.props.locations.map( location => (
             <li key={location.placeId} className="location-item" tabIndex="0"
               onClick={ event => this.props.handleClickOnSidebar(event.target.innerHTML) }

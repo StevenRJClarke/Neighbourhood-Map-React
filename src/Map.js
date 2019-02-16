@@ -221,7 +221,9 @@ class Map extends Component {
           () => {
             // Create the content to displayed in each infowindow
             infoWindow = new window.google.maps.InfoWindow({
-              content: `<h3>${marker.title}</h3>`
+              content: `<h3>${marker.title}</h3>
+
+              <p>Venue information provided by <strong>Foursquare</strong>:`
             });
 
             // Add infowindow to an array

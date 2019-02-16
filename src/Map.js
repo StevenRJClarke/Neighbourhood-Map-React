@@ -162,13 +162,13 @@ class Map extends Component {
   // Add infowindows to markers
   // @param {Object} map - google.maps.Map
   createInfoWindows(map) {
-    let infoWindow,
-        infoWindows = [],
-        venueInfo = {},
+    let infoWindows = [],
         thisRef = this;
 
     this.state.markers.forEach(
       marker => {
+        let infoWindow,
+            venueInfo = {};
 
         // Fetch the Fourquare API to get more information about the location
         // to put in the infowindow

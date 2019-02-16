@@ -66,3 +66,31 @@ label {
   height: 100%;
   width: 75%;
 }
+
+/*Responsive*/
+
+@media screen and (max-width: 400px) {
+
+  #root {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .Sidebar {
+    height: 40%;
+    width: 100%;
+  }
+
+  label {
+    font-size: 0.8em;
+  }
+
+  .location-item {
+    font-size: 0.8em;
+  }
+
+  .Map {
+    height: 60%;
+    width: 100%;
+  }
+}

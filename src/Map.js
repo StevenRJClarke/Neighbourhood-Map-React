@@ -233,23 +233,29 @@ class Map extends Component {
 
             // Add description
             if (venueInfo.description) {
-              infoWindow.content += `
+              infoWindow.setContent(
+                infoWindow.content += `
 
-              <p>${venueInfo.description}</p>`
+                <p>${venueInfo.description}</p>`
+              )
             }
 
             // Add photo
             if (venueInfo.photo) {
-              infoWindow.content += `
+                infoWindow.setContent(
+                  infoWindow.content += `
 
-              <img src="${venueInfo.photo}" alt="${marker.title}"/>`
+                  <img src="${venueInfo.photo}" alt="${marker.title}"/>`
+                )
             }
 
             // Add count of likes
             if (venueInfo.likes) {
-              infoWindow.content += `
+              infoWindow.setContent(
+                infoWindow.content += `
 
-              <p>Likes: ${venueInfo.likes}</p>`
+                <p>Likes: ${venueInfo.likes}</p>`
+              )
             }
 
             // Add a listener so that the infowindow is displayed when a marker is

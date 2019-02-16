@@ -221,9 +221,10 @@ class Map extends Component {
           () => {
             // Create the content to displayed in each infowindow
             infoWindow = new window.google.maps.InfoWindow({
-              content: `<h3>${marker.title}</h3>
+              content: `<div aria-live="assertive">
+                <h3>${marker.title}</h3>
 
-              <p>Venue information provided by <strong>Foursquare</strong>:`
+                <p>Venue information provided by <strong>Foursquare</strong>`
             });
 
             // Add infowindow to an array
@@ -257,6 +258,10 @@ class Map extends Component {
                 <p>Likes: ${venueInfo.likes}</p>`
               )
             }
+
+            infoWindow.setContent(
+              infoWindow.content += `</div>`
+            )
 
             // Add a listener so that the infowindow is displayed when a marker is
             // clicked

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import sortBy from 'sort-by'
 import './App.css';
 
 class Map extends Component {

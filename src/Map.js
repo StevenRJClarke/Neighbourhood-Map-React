@@ -200,7 +200,7 @@ class Map extends Component {
             // Return venue information: a description, a count of likes and a photo
             venueInfo = {
               description: venue.description,
-              likes: venue.likes,
+              likes: venue.likes.count,
               photo: `${venue.bestPhoto.prefix}36x100${venue.bestPhoto.suffix}`
             }
           }

@@ -4,7 +4,6 @@ import './App.css';
 
 class Map extends Component {
   state = {
-    apiKey: process.env.REACT_APP_MAP_API_KEY,
     map: '',
     markers: [],
     infoWindows: []
@@ -17,11 +16,9 @@ class Map extends Component {
     // Pass the window the <Map/> initMap() function
     window.initMap = this.initMap;
 
-    const API = this.state.apiKey;
-
     // Create the <script> that will call the Google Maps API and call initMap()
     const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${API}&libraries=places&callback=initMap`;
+    script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCUhH19sAc0ayXKuOLbU4KtMwBTmlc3NtQ&libraries=places&callback=initMap`;
     script.async = true;
     script.defer = true;
 

@@ -63,9 +63,6 @@ class Map extends Component {
     // Create a PlacesService
     var service = new window.google.maps.places.PlacesService(map);
 
-    // Create an array of location with more information from PlaceResult
-    var newLocations = [];
-
     // Each element in our location array is being passed into an asynchroous
     // function, where it is updated. Each element must updated BEFORE sending
     // the updated array to the <App/>.

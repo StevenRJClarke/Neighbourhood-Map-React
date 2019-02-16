@@ -152,6 +152,8 @@ class Map extends Component {
       }
     )
 
+    markers.sort(sortBy('title'));
+
     this.setState({
       markers: markers
     })

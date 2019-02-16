@@ -17,7 +17,7 @@ class LocationFilter extends Component {
         <div id="location-input-description" hidden>
           Enter a location to filter the locations displayed on the map. Only locations that match the text entered will be displayed.
         </div>
-        <label for="location-input">Filter locations</label>
+        <label htmlFor="location-input">Filter locations</label>
         <input id="location-input" type="text" aria-describedby="location-input-description"
           value={this.state.query}
           onChange={ event => {

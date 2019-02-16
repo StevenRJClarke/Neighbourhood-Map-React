@@ -68,7 +68,7 @@ class Map extends Component {
     // the updated array to the <App/>.
 
     // Use Promise.all(), which takes in an array of Promises
-    let locationsPromise = Promise.all(
+    Promise.all(
 
       // Promise.all() needs an array of Promises, use map() to return an array...
 

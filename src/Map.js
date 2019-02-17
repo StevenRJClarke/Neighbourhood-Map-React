@@ -201,7 +201,8 @@ class Map extends Component {
         )
         .catch(
           error => {
-            console.log(error);
+            // Notify user of error using API in infowindows
+            infoWindow.setContent('There was an error loading the data');
 
             // Return empty strings for venue information
             venueInfo = {

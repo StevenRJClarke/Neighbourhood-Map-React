@@ -21,6 +21,8 @@ The application is usable by the keyboard and a screen reader.
 
 Clone the repository to a local project directory.
 
+Run <code>npm install</code> to install dependencies
+
 Run <code>npm start</code> from a terminal within the project directory.
 
 The application will run in [http://localhost:3000](http://localhost:3000) in the browser.

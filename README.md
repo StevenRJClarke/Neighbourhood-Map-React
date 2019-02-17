@@ -17,6 +17,8 @@ The application is usable by the keyboard and a screen reader.
 
 ## Installation and Getting Started
 
+### Run in Development Mode
+
 Clone the repository to a local project directory.
 
 Run <code>npm start</code> from a terminal within the project directory.

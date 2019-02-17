@@ -26,3 +26,15 @@ Run <code>npm install</code> to install dependencies
 Run <code>npm start</code> from a terminal within the project directory.
 
 The application will run in [http://localhost:3000](http://localhost:3000) in the browser.
+
+### Run in Production Mode
+
+Production mode allows service workers to be used.
+
+Run:
+
+<code>npm run build</code>
+
+<code>serve -s build</code>
+
+The application will run in [http://localhost:5000](http://localhost:5000) in the browser.

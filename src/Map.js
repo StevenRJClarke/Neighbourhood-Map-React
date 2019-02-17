@@ -164,6 +164,17 @@ class Map extends Component {
         let infoWindow,
             venueInfo = {};
 
+        // Create the content to displayed in each infowindow
+        infoWindow = new window.google.maps.InfoWindow({
+          content: `<div aria-live="assertive">
+            <h3>${marker.title}</h3>
+
+            <p>Venue information provided by <strong>Foursquare</strong>`
+        });
+
+        // Add infowindow to an array
+        infoWindows.push(infoWindow);
+
         // Fetch the Fourquare API to get more information about the location
         // to put in the infowindow
         fetch(`https://api.foursquare.com/v2/venues/explore?client_id=GUA2IQTSLKUOJ1YDJNHF5VJ2FWIAQQNLXJH2ISPWQ2BTCFOG&client_secret=TCLGU4JSWBSNLMMF42UU5YJXPJKHRTHXJJDNVDJ1RK25GX0V&v=20180323&limit=1&ll=${marker.position.lat()},${marker.position.lng()}`)
@@ -214,17 +225,6 @@ class Map extends Component {
         )
         .finally(
           () => {
-            // Create the content to displayed in each infowindow
-            infoWindow = new window.google.maps.InfoWindow({
-              content: `<div aria-live="assertive">
-                <h3>${marker.title}</h3>
-
-                <p>Venue information provided by <strong>Foursquare</strong>`
-            });
-
-            // Add infowindow to an array
-            infoWindows.push(infoWindow);
-
             // Add additional venue information from Foursquare to infowindow.
 
             // Add description

@@ -21,6 +21,8 @@ class Map extends Component {
     script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCUhH19sAc0ayXKuOLbU4KtMwBTmlc3NtQ&libraries=places&callback=initMap`;
     script.async = true;
     script.defer = true;
+    // Notify user of error using Google Maps API
+    script.onerror = () => document.body.prepend('Error using Google Maps API');
 
     document.body.appendChild(script);
   }

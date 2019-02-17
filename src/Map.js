@@ -42,6 +42,11 @@ class Map extends Component {
   }
 
   componentDidUpdate() {
+    // Notify user of authentication failure with Google Maps API
+    window.gm_authFailure = () => {
+      document.getElementById('map').innerHTML = `<h2 class="authentication-failure">Google Maps could not be authenticated</h2>`
+    }
+
     // See if filtered locations has changed. Only show those markers that have
     // been filtered
     this.filterMarkers()

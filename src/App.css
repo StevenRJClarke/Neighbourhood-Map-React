@@ -67,6 +67,11 @@ label {
   width: 75%;
 }
 
+.authentication-failure {
+  color: #1d1f21;
+  margin: 40px;
+}
+
 /*Responsive*/
 
 @media screen and (max-width: 400px) {
